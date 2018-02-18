@@ -1,5 +1,5 @@
 /* event listener */
-document.getElementsByName("ordem")[0].addEventListener('change', ordenaFilmes);
+document.getElementsByName("order")[0].addEventListener('change', ordenaFilmes);
 
 /* checking for the current variables */
 function regexReplaceUrlSearch(url, key, value){
@@ -15,7 +15,7 @@ function regexReplaceUrlSearch(url, key, value){
 /* redirects us for the correct url on change */
 function ordenaFilmes() {
 	var url = window.location.href;
-	var key = 'ordem';
+	var key = 'order';
 	var value = this.value;
 	window.location.href = regexReplaceUrlSearch(url, key, value);
 }

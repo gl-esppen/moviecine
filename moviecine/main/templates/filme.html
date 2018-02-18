@@ -6,20 +6,21 @@
 	<section class="container detalhe_filme">
 		<div class="container keep-size">
 			<div class="header_filmes container">
-				<h2 class="titulo">{{ filme.titulo_principal }}</h2>
+				<h2 class="titulo">{{ filme.titulo }}</h2>
 			</div>
 			<div class="float-left imagem_filme">
 				<img class="imagem_principal" src="{{ filme.imagem.url }}" alt="filmes/imagens/">	
 			</div>
 			<div class="float-right informacao_filme">
-				<h3>Título:</h3>
-				<p>{{filme.titulo}}</p>
+				<h3>Título Original:</h3>
+				<p>{{filme.titulo_original}}</p>
 
 				<h3>Duração:</h3>
 				<p>{{filme.duracao}}</p>
 
 				<h3>Likes:</h3>
 				<p>{{filme.likes}}</p>
+				<p><a href="{% url 'adicionar_like_filme_slug' slug=filme.slug %}">Gostei</a></p>
 
 				<h3>Sinopse:</h3>
 				<p>{{filme.sinopse}}</p>

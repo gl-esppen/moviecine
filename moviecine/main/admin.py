@@ -6,26 +6,26 @@ from main.models import Filme, Ator
 
 class AtorAdmin(admin.ModelAdmin):
     list_display = ('nome',)
-
+    prepopulated_fields = {'slug': ('nome',)}
     search_fields = ['nome',]
 
     fieldsets = (
         ('Dados do Ator', {
-            'fields': ('nome', 'imagem'),
+            'fields': ('nome', 'imagem', 'slug'),
         }),
     )
 
 
 class FilmeAdmin(admin.ModelAdmin):
 
-    list_display = ('titulo','titulo_principal','duracao', 'display_image', 'get_atores','publicado', 'likes')
+    list_display = ('titulo','titulo_original','duracao', 'display_image', 'get_atores','publicado', 'likes')
     list_filter = ('atores__nome','publicado')
-
-    search_fields = ['titulo','titulo_principal', 'atores__nome']
+    prepopulated_fields = {'slug': ('titulo',)}
+    search_fields = ['titulo','titulo_original', 'atores__nome']
 
     fieldsets = (
         ('Dados do Filme', {
-            'fields': ('titulo','titulo_principal','slug', 'duracao','likes', 'publicado','sinopse', 'imagem'),
+            'fields': ('titulo','titulo_original','slug', 'duracao','likes', 'publicado','sinopse', 'imagem'),
         }),
         ('Atores', {
             'fields': ('atores',),

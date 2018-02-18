@@ -6,6 +6,7 @@ from django.db import models
 
 class Ator(models.Model):
     nome = models.CharField(max_length=150, verbose_name='Nome')
+    slug = models.SlugField(max_length=50, verbose_name='Slug')
     imagem = models.ImageField(upload_to='atores/imagens/', verbose_name='Imagem', default='atores/imagens/no_image.png')
 
     class Meta:
@@ -15,20 +16,15 @@ class Ator(models.Model):
     def __unicode__(self):
         return self.nome
 
-    def get_filmes_relacionados(self):
-        return Filme.objects.filter(
-            atores=self
-        )[:20]
-
     def get_absolute_url(self):
-        return '/ator/%i/' % self.pk
+        return '/ator/%s/' % self.slug
 
 
 class Filme(models.Model):
     titulo = models.CharField(max_length=150, verbose_name='Titulo')
-    titulo_principal = models.CharField(max_length=150, verbose_name='Titulo')
+    titulo_original = models.CharField(max_length=150, verbose_name='Titulo Original')
     slug = models.SlugField(max_length=50, verbose_name='Slug')
-    duracao = models.TimeField(verbose_name='Duração')
+    duracao = models.PositiveIntegerField(verbose_name='Duração do filme em segundos')
     sinopse = models.TextField(verbose_name='Sinopse')
     imagem = models.ImageField(upload_to='filmes/imagens/', verbose_name='Imagem', default='filmes/imagens/no_image.png')
     likes = models.IntegerField(verbose_name='Likes')
@@ -42,11 +38,6 @@ class Filme(models.Model):
     def __unicode__(self):
         return self.titulo
 
-    def get_filmes_relacionados(self):
-        return Filme.objects.filter(
-            atores=self.atores.all(),
-        ).exclude(
-            pk=self.pk
-        )[:10]
-
+    def get_absolute_url(self):
+        return '/filme/%s/' % self.slug
 
