@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<section class="container detalhe_filme">
+		<div class="container keep-size">
+			<div class="header_filmes container">
+				<h2 class="titulo">Atores</h2>
+			</div>
+			<div class="float-left imagem_filme">
+				<img class="imagem_principal" src="{{ ator.imagem.url }}" alt="{{ ator.nome }}" title="{{ ator.nome }}">	
+			</div>
+			<div class="float-right informacao_ator">
+				<h3>Ator</h3>
+				<p class="nome_ator">{{ ator }}</p>
+			</div>
+		</div>
+	</section>
+{% endblock %}

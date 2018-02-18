@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load templates_extras %}
+
+{% block content %}
+	<section class="container detalhe_filme">
+		<div class="container keep-size">
+			<div class="header_filmes container">
+				<h2 class="titulo">{{ filme.titulo_principal }}</h2>
+			</div>
+			<div class="float-left imagem_filme">
+				<img class="imagem_principal" src="{{ filme.imagem.url }}" alt="filmes/imagens/">	
+			</div>
+			<div class="float-right informacao_filme">
+				<h3>Título:</h3>
+				<p>{{filme.titulo}}</p>
+
+				<h3>Duração:</h3>
+				<p>{{filme.duracao}}</p>
+
+				<h3>Likes:</h3>
+				<p>{{filme.likes}}</p>
+
+				<h3>Sinopse:</h3>
+				<p>{{filme.sinopse}}</p>
+
+				<h3>Atores:</h3>
+				<p class="paragrafo_destaque">{{ filme.atores.all|join_hiperlink }}</p>
+			</div>
+		</div>
+	</section>
+{% endblock %}
