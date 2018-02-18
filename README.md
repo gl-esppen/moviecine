@@ -47,7 +47,7 @@
 ## Sugestão de Arquitetura:
 
 * Configurando o sistema 
-- SUPERVISOR
+- SUPERVISOR:
 Ferramenta para garantir que o gunicorn permaneça ativo e registra os logs de erro.
 
 - Fabric
@@ -55,7 +55,7 @@ Ferramenta para automação de deploys.
 
 
 * Otimizando o acesso
-- EC2
+- EC2:
     Instancia para aplicação, com integração de outros serviços para otimizar acesso e fluxo de dados.
 	
 	- Auto Scaling
@@ -65,14 +65,14 @@ Ferramenta para automação de deploys.
     - Load Balance
         Configuração de máquinas secundárias para distribuição de carga com a instancia principal, de forma a evitar sobrecarga devido ao alto volume de acesso diário e simultaneo.
 
-- RDS
+- RDS:
     Banco de dados Postgres da aplicação
 
-- S3
+- S3:
     Armazenamento de arquivos estáticos e de mídias.    
 
 
-- CloudWatch
+- CloudWatch:
     Monitoramento das máquinas de processos com alertas personalizados (Ex: Database CPU)
 
 
